@@ -1,0 +1,28 @@
+version: '3'
+services:
+    prestashop:
+    image: sdomagal/weasleyowie:0.21
+    environment:
+      - PS_DOMAIN=localhost:17188
+      - PS_LANGUAGE=pl
+      - PS_COUNTRY=POL
+      - PS_ENABLE_SSL=1
+      - ADMIN_MAIL=admin@admin.com
+      - ADMIN_PASSWD=jajahagrida
+      - PS_INSTALL_AUTO=1
+      - PS_INSTALL_DB=0
+      - PS_FOLDER_INSTALL=install_folder
+      - DB_SERVER=actina15.maas
+      - DB_USER=BE_171884
+      - DB_PASSWD=jajahagrida
+      - DB_NAME=BE_171884
+      - ROOT_PASSWD=student
+      - PS_FOLDER_ADMIN=admin_BE_171884
+    ports:
+      - "17188:443"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
